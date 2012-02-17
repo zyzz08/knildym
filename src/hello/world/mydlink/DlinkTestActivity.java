@@ -30,7 +30,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class DlinkActivity extends Activity implements OnClickListener {
+public class DlinkTestActivity extends Activity implements OnClickListener {
 
 	private TextView result;
 	private ImageView img;
