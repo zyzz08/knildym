@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+	<style name="transDialog" parent="android:Theme.Dialog">
+		<item name="android:windowBackground">
+			@color/dialog_back
+		</item>
+	</style>
+
+	<style name="transActivity" parent="android:Theme.Translucent.NoTitleBar">
+		<item name="android:windowBackground">
+			@color/dialog_back
+		</item>
+		<item name="android:windowIsTranslucent">true</item>
+		<item name="android:windowAnimationStyle">@style/pushanimation</item>
+	</style>
+
+	<style name="startActivity" parent="android:Theme">
+		<item name="android:windowIsTranslucent">true</item>
+		<item name="android:windowAnimationStyle">@style/zoomanimation</item>
+	</style>
+	<style name="zoomanimation">
+		<item name="@android:windowEnterAnimation">@anim/zoomin</item>
+		<item name="@android:windowExitAnimation">@anim/zoomout</item>
+	</style>
+	<style name="pushanimation">
+		<item name="@android:windowEnterAnimation">@anim/push_up_in</item>
+		<item name="@android:windowExitAnimation">@anim/push_down_out</item>
+	</style>
+</resources>
