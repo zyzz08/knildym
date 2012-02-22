@@ -8,20 +8,41 @@
 package hello.world.mydlink;
 
 public final class R {
+    public static final class anim {
+        public static final int push_down_out=0x7f040000;
+        public static final int push_left_in=0x7f040001;
+        public static final int push_right_out=0x7f040002;
+        public static final int push_up_in=0x7f040003;
+        public static final int zoomin=0x7f040004;
+        public static final int zoomout=0x7f040005;
+    }
     public static final class attr {
     }
+    public static final class color {
+        public static final int background=0x7f050000;
+        public static final int control_back=0x7f050001;
+        public static final int dialog_back=0x7f050002;
+    }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int launcher=0x7f020001;
+        public static final int field2=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
+        public static final int launcher=0x7f020002;
+        public static final int logo_dlink=0x7f020003;
+        public static final int logo_mydlink=0x7f020004;
     }
     public static final class id {
-        public static final int bt0=0x7f050001;
-        public static final int bt1=0x7f050002;
-        public static final int bt2=0x7f050003;
-        public static final int bt3=0x7f050004;
-        public static final int bt4=0x7f050005;
-        public static final int img=0x7f050006;
-        public static final int result=0x7f050000;
+        public static final int bt0=0x7f080006;
+        public static final int bt1=0x7f080007;
+        public static final int bt2=0x7f080008;
+        public static final int bt3=0x7f080009;
+        public static final int bt4=0x7f08000a;
+        public static final int email=0x7f080001;
+        public static final int img=0x7f08000b;
+        public static final int password=0x7f080002;
+        public static final int result=0x7f080005;
+        public static final int signin=0x7f080004;
+        public static final int signinfield=0x7f080000;
+        public static final int staysignedin=0x7f080003;
     }
     public static final class layout {
         public static final int cameras=0x7f030000;
@@ -31,7 +52,14 @@ public final class R {
         public static final int test=0x7f030004;
     }
     public static final class string {
-        public static final int app_name=0x7f040001;
-        public static final int hello=0x7f040000;
+        public static final int app_name=0x7f060001;
+        public static final int hello=0x7f060000;
+    }
+    public static final class style {
+        public static final int pushanimation=0x7f070004;
+        public static final int startActivity=0x7f070002;
+        public static final int transActivity=0x7f070001;
+        public static final int transDialog=0x7f070000;
+        public static final int zoomanimation=0x7f070003;
     }
 }
