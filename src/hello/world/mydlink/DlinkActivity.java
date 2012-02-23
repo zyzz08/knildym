@@ -30,6 +30,8 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.dlink.signal.Encryption;
+
 public class DlinkActivity extends Activity implements OnClickListener {
 
 	private TextView result;
@@ -192,20 +194,21 @@ public class DlinkActivity extends Activity implements OnClickListener {
 			}
 			break;
 		case R.id.bt2:
-			
+
 			connectDevice(device);
 			break;
 		case R.id.bt3:
-			connectDevice_img(device);
-			// connectSignature(device);
+			// connectDevice_img(device);
+			connectSignature(device);
 
 			break;
 		case R.id.bt4:
-			result.setText(NetUtil.MD5Str("software"));
-			String temp = Base64.encode("software".getBytes());
-			System.out.println(temp);
-			System.out.println(new String(Base64.decode(temp)));
-
+			// result.setText(NetUtil.MD5Str("software"));
+			// String temp = Base64.encode("software".getBytes());
+			// System.out.println(temp);
+			// System.out.println(new String(Base64.decode(temp)));
+			test();
+			break;
 		default:
 			break;
 		}
@@ -217,20 +220,18 @@ public class DlinkActivity extends Activity implements OnClickListener {
 		try {
 
 			String req = "no=" + dev.getMydlinkNo();
-
-			String temp = req + dev.getAuthenticationKeyForSignaling();
-			// String signature = NetUtil.getSIGNATURE_(NetUtil.MD5Str16(temp
-			// ).getBytes());
-			String signature = NetUtil.getSignature(NetUtil.MD5(temp));
+			byte[] vol=NetUtil.MD5(req+dev.getAuthenticationKeyForSignaling());
+			String signature = NetUtil.getSignature(vol);
+			String request = req + "&s=" + signature;
+			System.out.println(request);
+			// Encryption
+			Encryption en = new Encryption();
 			// 定义获取文件内容的URL
+			System.out.println("Encoded as:\t" + en.encodeMessage(request));
+			System.out.println("Decoded as:\t" + en.decodeMessage(en.encodeMessage(request)));
 			URL url = new URL("http://" + dev.getSignalAddress()
-					+ Constant.SIGNATURE + "?"
-					+ URLEncoder.encode("no", "UTF-8") + "="
-					+ URLEncoder.encode(dev.getMydlinkNo(), "UTF-8") + "&"
-					+ URLEncoder.encode("s", "UTF-8") + "="
-					+ URLEncoder.encode(signature));
+					+ Constant.SIGNATURE + "?" + en.encodeMessage(request));
 			System.out.println(url);
-
 			// 打开URL链接
 			URLConnection connection = url.openConnection();
 
@@ -245,11 +246,41 @@ public class DlinkActivity extends Activity implements OnClickListener {
 			}
 			// 将缓存的内容转化为String,用UTF-8编码
 			info = EncodingUtils.getString(baf.toByteArray(), "UTF-8");
+			info = en.decodeMessage(info);
 		} catch (Exception e) {
 			info = e.getMessage();
 		}
 		result.setText(info);
 		return info;
+	}
+
+	private void test() {
+		String base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./;'[]\\-=!@#$%^&*()_+{}|:\"<>?`~";
+		byte[] code = base.getBytes();
+		int count = 5;
+		Encryption en = new Encryption();
+		do {
+			int size = (int) (Math.random() * 100) + 8;
+			byte[] ctn = new byte[size];
+			for (int i = 0; i < size; i++)
+				ctn[i] = code[(int) (Math.random() * code.length)];
+
+			String val = base;
+			System.out.println("\nOriginal is:\t" + val);
+
+			String out = en.encodeMessage(val);
+			System.out.println("Encoded as:\t" + out);
+
+			String back = en.decodeMessage(out);
+			System.out.println("Decoded as:\t" + back);
+
+			if (val.equals(back))
+				System.out.println("Test result:\tPASS");
+			else
+				throw new IllegalArgumentException("Test result: FAIL (" + val
+						+ ", size " + size);
+
+		} while (count-- > 0);
 	}
 
 	private String connectDevice(WebCamara dev) {

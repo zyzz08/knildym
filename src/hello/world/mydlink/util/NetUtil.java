@@ -120,6 +120,20 @@ public class NetUtil {
 		return hexValue.toString().toUpperCase();
 	}
 
+	public static String HexString(int[] bytes) {
+		if (null == bytes)
+			return null;
+		StringBuffer hexValue = new StringBuffer();
+		for (int i = 0; i < bytes.length; i++) {
+			int val = bytes[i] & 0xff;
+			if (val < 16) {
+				hexValue.append("0");
+			}
+			hexValue.append(Integer.toHexString(val));
+		}
+		return hexValue.toString().toUpperCase();
+	}
+
 	// MD5加密，32位
 	public static String MD5Str(String str) {
 		return HexString(MD5(str));
@@ -133,11 +147,11 @@ public class NetUtil {
 	}
 
 	public static String getSignature(byte[] md5Bytes) {
-		byte[] result = new byte[4];
-		result[0] = (byte) (md5Bytes[0] ^ md5Bytes[4] ^ md5Bytes[8] ^ md5Bytes[12]);
-		result[1] = (byte) (md5Bytes[1] ^ md5Bytes[5] ^ md5Bytes[9] ^ md5Bytes[13]);
-		result[2] = (byte) (md5Bytes[2] ^ md5Bytes[6] ^ md5Bytes[10] ^ md5Bytes[14]);
-		result[3] = (byte) (md5Bytes[3] ^ md5Bytes[7] ^ md5Bytes[11] ^ md5Bytes[15]);
+		int[] result = new int[4];
+		result[0] = (md5Bytes[0] ^ md5Bytes[4] ^ md5Bytes[8] ^ md5Bytes[12]);
+		result[1] = (md5Bytes[1] ^ md5Bytes[5] ^ md5Bytes[9] ^ md5Bytes[13]);
+		result[2] = (md5Bytes[2] ^ md5Bytes[6] ^ md5Bytes[10] ^ md5Bytes[14]);
+		result[3] = (md5Bytes[3] ^ md5Bytes[7] ^ md5Bytes[11] ^ md5Bytes[15]);
 		return HexString(result);
 	}
 
