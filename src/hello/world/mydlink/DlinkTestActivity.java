@@ -1,6 +1,6 @@
 package hello.world.mydlink;
 
-import hello.world.mydlink.model.WebCamara;
+import hello.world.mydlink.model.Camara;
 import hello.world.mydlink.util.Base64;
 import hello.world.mydlink.util.Constant;
 import hello.world.mydlink.util.NetUtil;
@@ -37,8 +37,8 @@ public class DlinkTestActivity extends Activity implements OnClickListener {
 	private String email = "madduxtsai@gmail.com";;
 	private String password = "software";
 	private String redirect = "https://twqa.mydlink.com";
-	private List<WebCamara> devicelist;
-	private WebCamara device;
+	private List<Camara> devicelist;
+	private Camara device;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -212,7 +212,7 @@ public class DlinkTestActivity extends Activity implements OnClickListener {
 
 	}
 
-	private String connectSignature(WebCamara dev) {
+	private String connectSignature(Camara dev) {
 		String info;
 		try {
 
@@ -252,7 +252,7 @@ public class DlinkTestActivity extends Activity implements OnClickListener {
 		return info;
 	}
 
-	private String connectDevice(WebCamara dev) {
+	private String connectDevice(Camara dev) {
 		String info;
 		try {
 			// 定义获取文件内容的URL
@@ -284,7 +284,7 @@ public class DlinkTestActivity extends Activity implements OnClickListener {
 		return info;
 	}
 
-	private Bitmap connectDevice_img(WebCamara dev) {
+	private Bitmap connectDevice_img(Camara dev) {
 		Bitmap info = null;
 		try {
 			// 定义获取文件内容的URL

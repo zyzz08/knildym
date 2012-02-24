@@ -53,7 +53,13 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f060001;
+        public static final int emailhint=0x7f060003;
         public static final int hello=0x7f060000;
+        public static final int passwordhint=0x7f060004;
+        public static final int signin=0x7f060006;
+        public static final int signintomydlink=0x7f060002;
+        public static final int signout=0x7f060007;
+        public static final int stayisigninhint=0x7f060005;
     }
     public static final class style {
         public static final int pushanimation=0x7f070004;

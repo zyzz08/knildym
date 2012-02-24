@@ -3,5 +3,11 @@
 
     <string name="hello">Hello World, MyDlinkActivity!</string>
     <string name="app_name">MyDlink</string>
+    <string name="signintomydlink">Sign in to mydlink</string>
+    <string name="emailhint">username@mydlink.com</string>
+    <string name="passwordhint">******</string>
+    <string name="stayisigninhint">Stay sign in</string>
+    <string name="signin">Sign in</string>
+    <string name="signout">Sign out</string>
 
 </resources>

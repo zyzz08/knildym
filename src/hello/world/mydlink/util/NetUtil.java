@@ -1,6 +1,6 @@
 package hello.world.mydlink.util;
 
-import hello.world.mydlink.model.WebCamara;
+import hello.world.mydlink.model.Camara;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -50,7 +50,7 @@ public class NetUtil {
 		return redirect.trim();
 	}
 
-	public static List<WebCamara> getDeviceList(String redirect, String email,
+	public static List<Camara> getDeviceList(String redirect, String email,
 			String password) throws IOException {
 		String data = URLEncoder.encode("email", "UTF-8") + "="
 				+ URLEncoder.encode(email, "UTF-8") + "&"
@@ -86,10 +86,10 @@ public class NetUtil {
 				res[0].length()));
 		System.out.println(count);
 
-		ArrayList<WebCamara> list = new ArrayList<WebCamara>();
+		ArrayList<Camara> list = new ArrayList<Camara>();
 		for (int i = 0; i < count; i++) {
 			System.out.println(res[i + 1]);
-			WebCamara camara = new WebCamara(res[i + 1]);
+			Camara camara = new Camara(res[i + 1]);
 			list.add(camara);
 		}
 		return list;

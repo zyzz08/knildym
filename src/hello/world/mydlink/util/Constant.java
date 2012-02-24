@@ -1,6 +1,8 @@
 package hello.world.mydlink.util;
 
 public class Constant {
+	
+	public static final String SHAREDPREFERENCES ="config";
 	//https://www.mydlink.com/m/index.php?version
 	public static final String HOSTSITE = "https://www.mydlink.com";
 	

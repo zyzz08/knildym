@@ -8,7 +8,7 @@ public class Cameras extends Activity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.launcher);
+		setContentView(R.layout.cameras);
 	}
 	@Override
 	protected void onResume() {

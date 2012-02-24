@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<color name="background">#FF000000</color>
+<color name="background">#FFeeeeee</color>
 <color name="control_back">#66333333</color>
 <color name="dialog_back">#DD111111</color>
 </resources>
